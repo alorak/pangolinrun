@@ -56,6 +56,72 @@ main{background:#f7f9fc}.introbar{background:#fff;border-color:#e4eaf0;min-heigh
 @media(max-width:900px){.tools{grid-template-columns:minmax(0,1fr);width:100%;overflow:hidden}.control-groups{min-width:0}.modes{min-width:0;overflow-x:auto}.tool-groups{min-width:0}}
 @media(max-width:450px){.brand strong{font-size:11px}.logo{width:28px;height:28px;font-size:16px}.head-title strong{font-size:11px}.head-actions{gap:3px}.wallet{padding:4px 5px}.iconbtn{min-width:30px;padding:0 6px}.tool{min-width:47px}}
 
+
+/* 3B hissiyatlı malzeme görünümü, sade yerleşim ve büyük dokunma hedefleri. */
+.introbar{display:flex;align-items:center;gap:12px;padding:5px 14px;min-height:66px;overflow:hidden}
+.introcopy{flex:0 1 230px;min-width:95px}
+.editbar{margin-left:auto;display:flex;align-items:center;justify-content:flex-end;gap:6px;min-width:0;max-width:100%}
+.editbar .modes{flex:0 1 auto;gap:5px;min-width:0;overflow-x:auto;padding:2px 1px;scrollbar-width:thin}
+.editbar .tool{min-width:58px;min-height:50px;padding:7px 9px;border-radius:12px;gap:2px}
+.editbar .tool .symbol{font-size:18px;height:20px;line-height:20px}
+.editbar .tool b{font-size:11px}
+.editbar .editundo{flex:0 0 42px;min-width:42px;height:46px;padding:0;font-size:22px;border-radius:11px}
+.tools{position:relative;display:flex;align-items:center;justify-content:flex-end;min-height:92px;padding:11px 17px;gap:14px;border-top:1px solid #dee8f0;grid-template-columns:none}
+.material-dock{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;min-width:0;max-width:calc(100% - 175px);transition:opacity .15s ease,visibility .15s}
+.materials{display:flex;flex:0 1 auto;justify-content:center;overflow-x:auto;gap:8px;padding:3px;scrollbar-width:thin;max-width:100%}
+.materials .tool{min-width:81px;min-height:64px;border-radius:13px;padding:9px 12px;gap:8px}
+.materials .swatch{width:38px;height:10px}
+.materials .tool b{font-size:12px}
+.tools #play{margin-left:auto;flex:0 0 auto;min-width:140px;min-height:58px;border-radius:14px;font-size:16px;font-weight:750;box-shadow:0 7px 18px #079b7840}
+.tools #play.primary{background:#10a876;border-color:#10a876;color:#fff}
+.tools #play:not(.primary){background:#e7f8f2;color:#087e5e;border-color:#9ed9c4;box-shadow:none}
+.tools.playing .material-dock{visibility:hidden;opacity:0;pointer-events:none}
+@media (max-width:1160px){
+ .material-dock{max-width:calc(100% - 157px)}
+ .materials{justify-content:flex-start}
+ .materials .tool{min-width:70px;min-height:59px;padding:7px 10px}
+ .editbar .tool{min-width:51px;padding:6px}
+ .introcopy{flex-basis:150px}
+}
+@media (max-width:900px){
+ .introbar{min-height:56px;padding:5px 9px;gap:6px}
+ .introcopy{flex:0 1 95px;min-width:0}
+ .introcopy b{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;font-size:11px}
+ .editbar{gap:3px}
+ .editbar .modes{gap:3px}
+ .editbar .tool{min-width:44px;min-height:43px;padding:5px 6px}
+ .editbar .tool b{font-size:9px}
+ .editbar .tool .symbol{font-size:17px;height:18px;line-height:18px}
+ .editbar .editundo{min-width:36px;flex-basis:36px;height:40px;font-size:19px}
+ .tools{min-height:78px;padding:7px 9px}
+ .material-dock{max-width:calc(100% - 120px)}
+ .materials{gap:5px}
+ .materials .tool{min-width:66px;min-height:59px;padding:7px 9px}
+ .tools #play{min-width:108px;min-height:52px;font-size:13px}
+}
+@media (max-width:650px){
+ .introbar{min-height:48px;padding:3px 7px}
+ .introbar .stepicon,.introcopy{display:none}
+ .editbar{width:100%;justify-content:flex-end}
+ .editbar .modes{flex:1 1 auto;justify-content:flex-end}
+ .editbar .tool{min-width:41px;min-height:40px}
+ .editbar .tool b{display:none}
+ .editbar .editundo{min-width:33px;flex-basis:33px;height:38px}
+ .tools{min-height:74px;padding:6px 7px}
+ .material-dock{position:static;transform:none;flex:1 1 auto;max-width:none;justify-content:flex-start;overflow:hidden}
+ .materials{max-width:100%;flex:1 1 auto;justify-content:flex-start}
+ .materials .tool{min-width:59px;min-height:55px;padding:6px 8px;gap:5px}
+ .materials .swatch{width:31px;height:9px}
+ .materials .tool b{font-size:10px}
+ .tools #play{min-width:94px;min-height:53px;font-size:12px}
+}
+@media (max-width:900px) and (orientation:landscape){
+ .introbar{min-height:46px}
+ .tools{min-height:62px}
+ .materials .tool{min-height:47px;min-width:60px}
+ .tools #play{min-height:48px}
+}
+
 </style>
 </head>
 <body>
@@ -69,14 +135,14 @@ main{background:#f7f9fc}.introbar{background:#fff;border-color:#e4eaf0;min-heigh
 <div id="shade"></div>
 <aside id="sidebar"><div class="side-top"><h2>Seviyeler</h2></div><div class="side-scroll" id="levelList"></div></aside>
 <main>
-<div class="introbar"><div class="stepicon" id="stepIcon">01</div><div class="introcopy"><b id="missionName">Görev</b><span id="missionHint">Başlangıç noktalarını bağla</span></div><button class="btn flat" id="resetLevel" title="Seviyeyi sıfırla" aria-label="Seviyeyi sıfırla">↺</button></div>
+<div class="introbar"><div class="stepicon" id="stepIcon">01</div><div class="introcopy"><b id="missionName">Görev</b><span id="missionHint">Başlangıç noktalarını bağla</span></div><div class="editbar" role="toolbar" aria-label="Düzenleme araçları"><div class="modes" id="modes"></div><button class="iconbtn editundo" id="undo" title="Geri al (Ctrl+Z)" aria-label="Geri al">↶</button><button class="iconbtn editundo" id="redo" title="İleri al (Ctrl+Y)" aria-label="İleri al">↷</button><button class="iconbtn editundo" id="resetLevel" title="Seviyeyi sıfırla" aria-label="Seviyeyi sıfırla">↻</button></div></div>
 <div class="workspace" id="workspace"><canvas id="gameCanvas" aria-label="Pangolin Run inşa ve fizik oyun alanı"></canvas>
 <div class="camera-controls" id="cameraControls"><button id="panLeft" aria-label="Sahneyi sola kaydır">◀</button><span>KAYDIR</span><button id="panRight" aria-label="Sahneyi sağa kaydır">▶</button></div><div class="hud"><div class="chip" id="timeChip">Süre <strong id="timeValue">0.0 sn</strong></div><div class="chip" id="goalChip">Hedef <strong id="holdValue">0.0 / 5 sn</strong></div><div class="chip good" title="Kullanılan parça sayısı">Parça <strong id="partCount">0</strong></div></div>
 <div class="hint" id="hint"><b>İpucu:</b> Sabit noktalar arasında çizgi oluşturmak için sürükle veya iki noktaya dokun.</div>
 <div class="inspector" id="inspector" hidden><h3 id="inspectorTitle">Parça ayarları</h3><label>Ön gerilim <strong id="tensionText">0%</strong></label><input id="tensionSlider" type="range" min="-60" max="60" step="5" value="0" aria-label="Ön gerilim"><label>Kopma zamanlayıcısı <strong id="timerText">Kapalı</strong></label><input id="timerSlider" type="range" min="0" max="10" step="0.5" value="0" aria-label="Kopma zamanlayıcısı"><div class="row"><button class="btn alert" id="deletePart">Parçayı sil</button><button class="btn" id="closeInspector">Kapat</button></div></div>
 <div class="result" id="result" hidden><div class="result-card"><div class="result-icon" id="resultIcon">✦</div><h2 id="resultTitle">Tebrikler!</h2><p id="resultDesc">Top hedefe ulaştı.</p><div class="result-buttons"><button class="btn" id="resultRetry">Tekrar dene</button><button class="btn primary" id="resultNext">Sonraki seviye →</button></div></div></div>
 <div class="toast" id="toast" hidden></div></div>
-<div class="tools"><div class="tool-groups"><div class="materials" id="materials"></div><div class="vsep"></div></div><div class="control-groups"><div class="modes" id="modes"></div><div class="vsep"></div><button class="btn" id="undo" title="Geri al (Ctrl+Z)">↶</button><button class="btn" id="redo" title="İleri al (Ctrl+Y)">↷</button><button class="btn primary" id="play">▶ Başlat</button></div></div>
+<div class="tools" id="bottomDock"><div class="material-dock" id="materialDock"><div class="materials" id="materials" role="toolbar" aria-label="Malzeme seçimi"></div></div><button class="btn primary" id="play">▶ Başlat</button></div>
 </main>
 </div>
 <!-- Planck.js 1.5.1 (MIT). PR sürümünde motor gömülerek çevrimdışı tek dosya korunur. -->
@@ -214,7 +280,7 @@ $('undo').disabled=running||!history.length;$('redo').disabled=running||!future.
 $('resetLevel').disabled=running;
 $('timeValue').textContent=(sim?sim.t:0).toFixed(1)+' sn';$('holdValue').textContent=(sim?sim.hold:0).toFixed(1)+' / 5 sn';
 $('hint').innerHTML=running?'<b>Simülasyon:</b> Topun hedefin içinde kesintisiz 5 saniye kalması gerekir. Sonucu incelemek için Durdur düğmesini kullan.':`<b>${mode==='build'?'İnşa':mode==='move'?'Taşı':mode==='tension'?'Gerilim':mode==='timer'?'Zamanlayıcı':'Sil'}:</b> ${mode==='build'?'Sabit sarı noktalardan başlayıp çizgi çiz veya iki noktaya sırayla dokun.':mode==='move'?'Sabit olmayan bir bağlantı ucunu sürükleyerek yerini değiştir.':mode==='tension'?'Bir parçaya dokun; pozitif gerilim parçayı kısaltır.':mode==='timer'?'Bir parçaya dokun; kaç saniye sonra kopacağını belirle.':'Silmek istediğin parçaya dokun.'}`;
-$('workspace').classList.toggle('simulating',running);$('workspace').classList.toggle('move-mode',mode==='move');$('workspace').classList.toggle('erase-mode',mode==='delete');
+$('bottomDock').classList.toggle('playing',running);$('workspace').classList.toggle('simulating',running);$('workspace').classList.toggle('move-mode',mode==='move');$('workspace').classList.toggle('erase-mode',mode==='delete');
 if(running||selectedId===null){$('inspector').hidden=true}else{const p=pieces.find(p=>p.id===selectedId);$('inspector').hidden=!p;if(p){$('inspectorTitle').textContent=p.fixed?'Sabit parça':`${materials[p.type].name} · Parça #${p.id}`;$('tensionSlider').value=Math.round(p.tension*100);$('timerSlider').value=p.timer;$('tensionText').textContent=Math.round(p.tension*100)+'%';$('timerText').textContent=p.timer?p.timer+' sn':'Kapalı';$('tensionSlider').disabled=p.fixed;$('timerSlider').disabled=p.fixed;$('deletePart').disabled=p.fixed;}}
 renderMaterials();renderModes();render()}
 function snap(v,exclude){const possibilities=[];for(const p of scene.anchors){possibilities.push(point(p))}for(const p of pieces){if(p.id===exclude)continue;possibilities.push(p.a,p.b)}let best=null,bd=Math.max(18,17/(metrics.s||1));for(const p of possibilities){let d=dist(v,p);if(d<bd){bd=d;best=p}}return best?{x:best.x,y:best.y}:{x:clamp(Math.round(v.x/5)*5,10,W-10),y:clamp(Math.round(v.y/5)*5,10,H-10)}}
@@ -261,13 +327,14 @@ function startPlanck(){
  world.setAllowSleeping(true);
  const ground=world.createBody();
  for(const [x1,y1,x2,y2] of scene.terrain){
-  ground.createFixture(pl.Edge(V(x1,y1),V(x2,y2)),{friction:.24,restitution:.02});
+  const vertical=Math.abs(x2-x1)<Math.abs(y2-y1)*.2;
+  ground.createFixture(pl.Edge(V(x1,y1),V(x2,y2)),{friction:vertical?.22:.35,restitution:vertical?.56:.18});
  }
  // Görünmez duvarlar oyuncunun dikey düzlem dışına çıkmasını engeller.
- ground.createFixture(pl.Edge(V(0,0),V(0,H)),{friction:.12});
- ground.createFixture(pl.Edge(V(W,0),V(W,H)),{friction:.12});
- const ballBody=world.createDynamicBody({position:V(...scene.ball),bullet:true,linearDamping:.13,angularDamping:.1});
- ballBody.createFixture(pl.Circle(15/PHYS_SCALE),{density:.8,friction:.31,restitution:.04});
+ ground.createFixture(pl.Edge(V(0,0),V(0,H)),{friction:.28,restitution:.52});
+ ground.createFixture(pl.Edge(V(W,0),V(W,H)),{friction:.28,restitution:.52});
+ const ballBody=world.createDynamicBody({position:V(...scene.ball),bullet:true,linearDamping:.11,angularDamping:.1});
+ ballBody.createFixture(pl.Circle(15/PHYS_SCALE),{density:.8,friction:.27,restitution:.43});
  const nBodies=sim.nodes.map(n=>{
   const body=n.fixed?world.createBody({position:V(n.x,n.y)}):world.createDynamicBody({position:V(n.x,n.y),linearDamping:.14,angularDamping:.16});
   if(!n.fixed)body.createFixture(pl.Circle(.065),{density:.34,isSensor:true,filterCategoryBits:0x0004,filterMaskBits:0});
@@ -299,7 +366,7 @@ function startPlanck(){
   const radius=materials[type].radius/PHYS_SCALE;
   const density=type==='sheet'?.65:type==='bar'?.42:type==='cloth'?.3:type==='rubber'?.56:.6;
   const friction=type==='rubber'?1.05:type==='cloth'?.55:.23;
-  const restitution=type==='rubber'?.42:.04;
+  const restitution=type==='rubber'?.75:type==='sheet'?.24:type==='cloth'?.16:.12;
   body.createFixture(pl.Box(Math.max(.045,len/(2*PHYS_SCALE)),Math.max(.045,radius)),{density,friction,restitution,isSensor:!materials[type].contact,filterCategoryBits:materials[type].contact?0x0002:0x0004,filterMaskBits:materials[type].contact?0xFFFF:0});
   bodies.push(body);link._body=body;
   const jointOpts={collideConnected:false,enableMotor:type==='sheet'||type==='bar',motorSpeed:0,maxMotorTorque:type==='sheet'?3.7:2.7};
@@ -342,7 +409,7 @@ function stepPlanck(){
   link.renderB={x:p.x*PHYS_SCALE+dx,y:p.y*PHYS_SCALE+dy};
  }
  const bp=ballBody.getPosition(),bv=ballBody.getLinearVelocity();
- ball.x=bp.x*PHYS_SCALE;ball.y=bp.y*PHYS_SCALE;ball.vx=bv.x*PHYS_SCALE;ball.vy=bv.y*PHYS_SCALE;
+ ball.x=bp.x*PHYS_SCALE;ball.y=bp.y*PHYS_SCALE;ball.vx=bv.x*PHYS_SCALE;ball.vy=bv.y*PHYS_SCALE;ball.angle=ballBody.getAngle();
  if(ball.y>H+75||sim.t>48){result(false,'Top hedefe ulaşamadı.');return}
  const d=Math.hypot(ball.x-scene.goal[0],ball.y-scene.goal[1]);
  const speed=Math.hypot(ball.vx,ball.vy);
@@ -389,9 +456,11 @@ ball.vx-=tangentX*sliding*.0009;ball.vy-=tangentY*sliding*.0009;
 if(moving&&n1&&n2){let push=Math.min(1.5,Math.max(0,-vn)*DT*.13);if(!n1.fixed){n1.x-=nx*push*(1-t);n1.y-=ny*push*(1-t)}if(!n2.fixed){n2.x-=nx*push*t;n2.y-=ny*push*t}}
 }
 for(let i=0;i<3;i++){
-for(const line of scene.terrain)collide(...line,6,false,null,null,0);
-for(const l of links){if(broken.has(l.pid)||!l.material.contact)continue;const a=nodes[l.a],b=nodes[l.b];collide(a.x,a.y,b.x,b.y,l.material.radius,true,a,b,l.type==='rubber'?.32:.08)}
-ball.x=clamp(ball.x,ball.r,W-ball.r);if(ball.y<ball.r){ball.y=ball.r;ball.vy=Math.abs(ball.vy)*.12}
+for(const line of scene.terrain)collide(...line,6,false,null,null,Math.abs(line[0]-line[2])<10?.52:.18);
+for(const l of links){if(broken.has(l.pid)||!l.material.contact)continue;const a=nodes[l.a],b=nodes[l.b];collide(a.x,a.y,b.x,b.y,l.material.radius,true,a,b,l.type==='rubber'?.7:l.type==='sheet'?.24:.15)}
+if(ball.x<ball.r){ball.x=ball.r;ball.vx=Math.abs(ball.vx)*.52}
+if(ball.x>W-ball.r){ball.x=W-ball.r;ball.vx=-Math.abs(ball.vx)*.52}
+if(ball.y<ball.r){ball.y=ball.r;ball.vy=Math.abs(ball.vy)*.38}
 }
 if(ball.y>H+75||sim.t>48){result(false,'Top oyun alanından çıktı veya süre doldu. Yapının açılarını ve dayanımını kontrol et.');return}
 let gx=scene.goal[0],gy=scene.goal[1],d=Math.hypot(ball.x-gx,ball.y-gy);if(d<44){sim.hold+=DT}else sim.hold=Math.max(0,sim.hold-.12);
@@ -404,6 +473,50 @@ let lastTime=0,accumulator=0;
 function frame(ms){let passed=Math.min(.07,Math.max(0,(ms-lastTime)/1000));lastTime=ms;if(running){accumulator+=passed;let loops=0;while(accumulator>=DT&&loops++<5){step();accumulator-=DT;if(!running)break}if(sim&&portrait){const visible=metrics.w/metrics.s,desired=clamp(sim.ball.x-visible*.56,0,W-visible);cameraX+=(desired-cameraX)*.055;metrics.ox=-cameraX*metrics.s}if(sim){$('timeValue').textContent=sim.t.toFixed(1)+' sn';$('holdValue').textContent=sim.hold.toFixed(1)+' / 5 sn'}}render();requestAnimationFrame(frame)}
 function roundrect(x,y,w,h,r,color,stroke){ctx.beginPath();ctx.roundRect(x,y,w,h,r);if(color){ctx.fillStyle=color;ctx.fill()}if(stroke){ctx.strokeStyle=stroke;ctx.stroke()}}
 function drawLine(ax,ay,bx,by,color,width,dash=[]){ctx.beginPath();ctx.moveTo(ax,ay);ctx.lineTo(bx,by);ctx.lineWidth=width;ctx.lineCap='round';ctx.setLineDash(dash);ctx.strokeStyle=color;ctx.stroke();ctx.setLineDash([])}
+// Hacimli kirişleri 3B koordinatlarda tanımlayıp eğik kamera ile projekte et.
+// Yapısal çarpışma matematiği Box2D'nin x/y düzleminde kalır.
+function polygon3(points,color){ctx.beginPath();ctx.moveTo(points[0][0],points[0][1]);for(let i=1;i<points.length;i++)ctx.lineTo(points[i][0],points[i][1]);ctx.closePath();ctx.fillStyle=color;ctx.fill()}
+function beam3(ax,ay,bx,by,base,thick=13,depth=11){
+ const dx=bx-ax,dy=by-ay,ln=Math.hypot(dx,dy)||1,ux=dx/ln,uy=dy/ln,nx=-uy*thick*.5,ny=ux*thick*.5;
+ // Oblique kamera: z uzaklaştıkça ekranın sağ üstüne projekte edilir.
+ const zx=depth*.77,zy=-depth*.52;
+ const A=[ax+nx,ay+ny],B=[bx+nx,by+ny],C=[bx-nx,by-ny],D=[ax-nx,ay-ny];
+ const Z=p=>[p[0]+zx,p[1]+zy];
+ ctx.save();ctx.shadowColor='#42586a48';ctx.shadowBlur=6;ctx.shadowOffsetX=3;ctx.shadowOffsetY=5;
+ polygon3([Z(A),Z(B),Z(C),Z(D)],'#718598');
+ ctx.shadowBlur=0;ctx.shadowOffsetX=0;ctx.shadowOffsetY=0;
+ polygon3([A,B,Z(B),Z(A)],'#a4b4c1');
+ polygon3([B,C,Z(C),Z(B)],'#4d6070');
+ polygon3([D,C,Z(C),Z(D)],'#495c6e');
+ polygon3([A,D,Z(D),Z(A)],'#8ba1af');
+ const gr=ctx.createLinearGradient(ax+nx,ay+ny,ax-nx,ay-ny);
+ gr.addColorStop(0,'#f3f8fd');gr.addColorStop(.13,base);gr.addColorStop(.72,base);gr.addColorStop(1,'#415c71');
+ polygon3([A,B,C,D],gr);
+ ctx.strokeStyle='#ffffff99';ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(A[0],A[1]);ctx.lineTo(B[0],B[1]);ctx.stroke();ctx.restore();
+}
+function sphere3(x,y,r,spin=0){
+ ctx.save();
+ ctx.fillStyle='#203d5273';ctx.beginPath();ctx.ellipse(x+6,y+13,r*.93,r*.39,-.2,0,Math.PI*2);ctx.fill();
+ const shell=ctx.createRadialGradient(x-r*.41,y-r*.48,r*.08,x+r*.23,y+r*.3,r*1.36);
+ shell.addColorStop(0,'#fff6bd');shell.addColorStop(.27,'#ffc466');shell.addColorStop(.66,'#eb963d');shell.addColorStop(.9,'#985021');shell.addColorStop(1,'#5b3626');
+ ctx.fillStyle=shell;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();
+ ctx.strokeStyle='#71431bd9';ctx.lineWidth=1.35;ctx.stroke();
+ ctx.save();ctx.beginPath();ctx.arc(x,y,r-1,0,Math.PI*2);ctx.clip();ctx.translate(x,y);ctx.rotate(spin);
+ ctx.strokeStyle='#fff1b562';ctx.lineWidth=1.25;
+ for(let i=-1;i<=1;i++){ctx.beginPath();ctx.ellipse(0,0,r*(.34+i*.15),r*.99,-.3,Math.PI*.2,Math.PI*1.8);ctx.stroke()}
+ for(let j=-1;j<=1;j++){ctx.beginPath();ctx.ellipse(0,j*7,r*.89,Math.max(1.5,7-Math.abs(j)*2),0,Math.PI*.15,Math.PI*.85);ctx.stroke()}
+ ctx.restore();
+ const shine=ctx.createRadialGradient(x-r*.45,y-r*.6,0,x-r*.4,y-r*.55,r*.7);
+ shine.addColorStop(0,'#ffffffa8');shine.addColorStop(1,'#ffffff00');ctx.fillStyle=shine;
+ ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();ctx.restore();
+}
+function rivet3(x,y,r=10){
+ ctx.save();ctx.fillStyle='#6b7784';ctx.beginPath();ctx.ellipse(x+5,y-3,r+1,r*.83,0,0,Math.PI*2);ctx.fill();
+ const g=ctx.createRadialGradient(x-3,y-3,1,x+2,y+2,r+3);g.addColorStop(0,'#fff6df');g.addColorStop(.35,'#e9b965');g.addColorStop(.75,'#b7803b');g.addColorStop(1,'#76502f');
+ ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();ctx.lineWidth=1.5;ctx.strokeStyle='#ffedc1';ctx.stroke();
+ ctx.fillStyle='#5b6872';ctx.beginPath();ctx.arc(x,y,r*.43,0,Math.PI*2);ctx.fill();ctx.restore();
+}
+
 function render(){if(!metrics.w)return;const {dpr,s,ox,oy,w,h}=metrics;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
 ctx.fillStyle='#f6f9fc';ctx.fillRect(0,0,w,h);ctx.save();ctx.translate(ox,oy);ctx.scale(s,s);
 const bg=ctx.createLinearGradient(0,0,W,H);bg.addColorStop(0,'#fbfdff');bg.addColorStop(.55,'#f3f7fb');bg.addColorStop(1,'#eaf1f8');ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
@@ -412,11 +525,17 @@ for(let x=0;x<=W;x+=25){ctx.strokeStyle=x%100===0?'#87a9c222':'#87a9c212';drawLi
 for(let y=0;y<=H;y+=25){ctx.strokeStyle=y%100===0?'#87a9c222':'#87a9c212';drawLine(0,y,W,y,ctx.strokeStyle,y%100===0?1.15:.7)}
 // Görsel ufuk çizgisi ve fiziksel platformlar.
 const haze=ctx.createLinearGradient(0,385,0,H);haze.addColorStop(0,'#e7eff600');haze.addColorStop(1,'#c6e0ef22');ctx.fillStyle=haze;ctx.fillRect(0,385,W,H-385);
-for(let k=0;k<scene.terrain.length;k++){let [x1,y1,x2,y2]=scene.terrain[k];drawLine(x1,y1,x2,y2,'#b7c7d5',19);drawLine(x1,y1,x2,y2,'#596f84',13);drawLine(x1,y1,x2,y2,'#d8e3ed',3);}
+for(let k=0;k<scene.terrain.length;k++){let [x1,y1,x2,y2]=scene.terrain[k];beam3(x1,y1,x2,y2,'#70889b',17,13);}
 // Hedef portali; bir duvarın üstünde durması beklenen mavi halka.
-let gx=scene.goal[0],gy=scene.goal[1],pulse=.7+Math.sin(performance.now()/340)*.08;ctx.save();ctx.shadowColor='#82d1cb';ctx.shadowBlur=28;ctx.strokeStyle=`rgba(88,224,243,${pulse})`;ctx.lineWidth=6;ctx.beginPath();ctx.arc(gx,gy,48,0,Math.PI*2);ctx.stroke();ctx.shadowBlur=0;ctx.strokeStyle='#b0ffff7a';ctx.lineWidth=2;ctx.beginPath();ctx.arc(gx,gy,39,0,Math.PI*2);ctx.stroke();ctx.fillStyle='#3bd6e511';ctx.beginPath();ctx.arc(gx,gy,45,0,Math.PI*2);ctx.fill();ctx.fillStyle='#347d88';ctx.font='bold 14px system-ui';ctx.textAlign='center';ctx.fillText('HEDEF',gx,gy-61);ctx.restore();
+let gx=scene.goal[0],gy=scene.goal[1],pulse=.71+Math.sin(performance.now()/340)*.07;ctx.save();
+ctx.strokeStyle='#198b9c80';ctx.lineWidth=8;ctx.beginPath();ctx.ellipse(gx+7,gy-7,46,49,-.11,0,Math.PI*2);ctx.stroke();
+ctx.shadowColor='#4cd9d1';ctx.shadowBlur=23;ctx.strokeStyle=`rgba(66,214,225,${pulse})`;ctx.lineWidth=8;
+ctx.beginPath();ctx.ellipse(gx,gy,46,49,-.11,0,Math.PI*2);ctx.stroke();ctx.shadowBlur=0;
+ctx.strokeStyle='#e2ffff';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(gx-2,gy-2,37,41,-.11,0,Math.PI*2);ctx.stroke();
+ctx.fillStyle='#41d8e313';ctx.beginPath();ctx.ellipse(gx,gy,43,46,-.11,0,Math.PI*2);ctx.fill();
+ctx.fillStyle='#347d88';ctx.font='bold 14px system-ui';ctx.textAlign='center';ctx.fillText('HEDEF',gx,gy-62);ctx.restore();
 // Seviye bağlantı noktaları.
-for(const p of scene.anchors){let [x,y]=p;ctx.fillStyle='#d9aa56';ctx.beginPath();ctx.arc(x,y,10,0,Math.PI*2);ctx.fill();ctx.fillStyle='#593819';ctx.beginPath();ctx.arc(x,y,5.4,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#ffe4a5';ctx.lineWidth=1.4;ctx.beginPath();ctx.arc(x,y,11,0,Math.PI*2);ctx.stroke()}
+for(const [x,y] of scene.anchors)rivet3(x,y,10);
 const nodes=running&&sim?sim.nodes:null,links=running&&sim?sim.links:null;
 if(nodes&&links){for(const l of links){const a=nodes[l.a],b=nodes[l.b],sel=l.pid===selectedId;let broken=sim.broken.has(l.pid);if(broken)continue;renderPiece(l.renderA||a,l.renderB||b,l.type,sel,l.source.tension)}}
 else for(const p of pieces)renderPiece(p.a,p.b,p.type,p.id===selectedId,p.tension);
@@ -426,15 +545,29 @@ if(pending){ctx.beginPath();ctx.arc(pending.x,pending.y,9,0,Math.PI*2);ctx.fillS
 if(gesture&&mode==='build'&&gesture.moved){const a=snap(gesture.start),b=snap(gesture.last),c=materials[material].color;drawLine(a.x,a.y,b.x,b.y,c,4,[9,7]);let price=Math.ceil(dist(a,b)*materials[material].cost);roundrect((a.x+b.x)/2-29,(a.y+b.y)/2-32,58,23,7,'#ffffffee','#9bb6c4');ctx.fillStyle='#305e77';ctx.textAlign='center';ctx.font='bold 12px system-ui';ctx.fillText('₺ '+price,(a.x+b.x)/2,(a.y+b.y)/2-16)}
 if(gesture&&mode==='move'&&gesture.node){let p=gesture.last;ctx.beginPath();ctx.arc(p.x,p.y,14,0,Math.PI*2);ctx.strokeStyle='#55e2bd';ctx.lineWidth=2;ctx.stroke()}
 const b=running&&sim?sim.ball:{x:scene.ball[0],y:scene.ball[1],r:15};
-ctx.save();ctx.shadowColor='#ffcd7c80';ctx.shadowBlur=16;const ballGrad=ctx.createRadialGradient(b.x-5,b.y-7,1,b.x,b.y,19);ballGrad.addColorStop(0,'#ffe5aa');ballGrad.addColorStop(.55,'#f9b864');ballGrad.addColorStop(1,'#c88139');ctx.fillStyle=ballGrad;ctx.beginPath();ctx.arc(b.x,b.y,b.r,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;ctx.strokeStyle='#754d2b';ctx.lineWidth=1.8;ctx.stroke();ctx.save();ctx.translate(b.x,b.y);ctx.rotate(running&&sim?sim.t*(sim.ball.vx/90):0);for(let i=0;i<7;i++){let a=i*Math.PI*2/7;ctx.fillStyle='#fff1c3ad';ctx.beginPath();ctx.arc(Math.cos(a)*8,Math.sin(a)*8,2.3,0,Math.PI*2);ctx.fill()}ctx.restore();ctx.restore();
+sphere3(b.x,b.y,b.r,running&&sim?(sim.ball.angle||sim.t*(sim.ball.vx/90)):0);
 // Küçük sahne etiketi.
 
 ctx.restore()}
-function renderPiece(a,b,type,selected,tension){let m=materials[type],w=m.radius*2;ctx.save();if(selected){drawLine(a.x,a.y,b.x,b.y,'#81cfc2',w+9)}drawLine(a.x,a.y,b.x,b.y,'#6f8192',w+4);
-if(type==='cloth'||type==='rope'||type==='elastic'){drawLine(a.x,a.y,b.x,b.y,m.color,w,[type==='cloth'?11:7,type==='cloth'?4:5])}
-else{drawLine(a.x,a.y,b.x,b.y,m.color,w);if(type==='sheet'){drawLine(a.x,a.y,b.x,b.y,'#d1e1fa',2)}if(type==='rocket'){let ang=Math.atan2(b.y-a.y,b.x-a.x),x=(a.x+b.x)/2,y=(a.y+b.y)/2;ctx.save();ctx.translate(x,y);ctx.rotate(ang);ctx.fillStyle='#fff1d4';ctx.beginPath();ctx.moveTo(12,0);ctx.lineTo(0,-7);ctx.lineTo(0,7);ctx.fill();ctx.restore()}}
-if(tension){ctx.strokeStyle=tension>0?'#f68c8c':'#86ebbc';ctx.lineWidth=2;ctx.beginPath();ctx.arc((a.x+b.x)/2,(a.y+b.y)/2,7,0,Math.PI*2);ctx.stroke()}
-ctx.restore()}
+function renderPiece(a,b,type,selected,tension){
+ let m=materials[type],w=m.radius*2;ctx.save();
+ if(selected)drawLine(a.x,a.y,b.x,b.y,'#3fbfa4',w+12);
+ if(type==='cloth'||type==='rope'||type==='elastic'){
+  drawLine(a.x+4,a.y+5,b.x+4,b.y+5,'#465e7255',w+2);
+  drawLine(a.x,a.y,b.x,b.y,type==='rope'?'#a77e40':'#7d8b88',w+4);
+  drawLine(a.x,a.y,b.x,b.y,m.color,w,[type==='cloth'?10:6,type==='cloth'?3:4]);
+  drawLine(a.x,a.y,b.x,b.y,'#fff8e599',1.15,[5,5]);
+ }else{
+  beam3(a.x,a.y,b.x,b.y,type==='bar'?'#8298ad':m.color,w,type==='sheet'?12:9);
+  if(type==='rocket'){
+   let ang=Math.atan2(b.y-a.y,b.x-a.x),x=(a.x+b.x)/2,y=(a.y+b.y)/2;
+   ctx.save();ctx.translate(x,y);ctx.rotate(ang);ctx.fillStyle='#fff4da';ctx.beginPath();ctx.moveTo(13,0);ctx.lineTo(0,-8);ctx.lineTo(0,8);ctx.closePath();ctx.fill();ctx.restore();
+  }
+ }
+ if(tension){ctx.strokeStyle=tension>0?'#d4764b':'#219c76';ctx.lineWidth=2;ctx.beginPath();ctx.arc((a.x+b.x)/2,(a.y+b.y)/2,8,0,Math.PI*2);ctx.stroke()}
+ ctx.restore();
+}
+
 loadLevel(0);resize();requestAnimationFrame(frame);
 // Basit otomasyon ve hata teşhisi için yalnızca okuma / kontrollü oyun arayüzü.
 window.PangolinRun={get physics(){return sim?.engine||'legacy'},get levels(){return levels.length},get level(){return current},get isRunning(){return running},get ball(){return sim?{...sim.ball}:null},get timer(){return sim?sim.t:0},get hold(){return sim?sim.hold:0},get spent(){return budgetUsed()},get pieces(){return deep(pieces)},loadLevel(i){if(isUnlocked(i))loadLevel(i)},addLink(a,b,type='sheet'){if(running||!scene.allowed.includes(type))return false;material=type;return addPiece(point(a),point(b))},start,stop};
