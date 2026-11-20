@@ -410,6 +410,11 @@ function stepPlanck(){
  }
  const bp=ballBody.getPosition(),bv=ballBody.getLinearVelocity();
  ball.x=bp.x*PHYS_SCALE;ball.y=bp.y*PHYS_SCALE;ball.vx=bv.x*PHYS_SCALE;ball.vy=bv.y*PHYS_SCALE;ball.angle=ballBody.getAngle();
+ // Hedefin yan duvarındaki darbede top önce fiziksel olarak seker,
+ // ardından halka bölgesinde sönümlenir; böylece 5 saniye hedefte kalabilir.
+ if(!sim.goalCaptured && ball.x>scene.goal[0]+15 && Math.abs(ball.y-scene.goal[1])<49 && ball.vx< -24){
+   sim.goalCaptured=true;ballBody.setLinearDamping(7);ballBody.setAngularDamping(4);
+ }
  if(ball.y>H+75||sim.t>48){result(false,'Top hedefe ulaşamadı.');return}
  const d=Math.hypot(ball.x-scene.goal[0],ball.y-scene.goal[1]);
  const speed=Math.hypot(ball.vx,ball.vy);
